@@ -29,6 +29,14 @@ describe Palette::Rule, "with a foreground" do
   end
 end
 
+describe Palette::Rule, "with a foreground set to none" do
+  subject { Palette::Rule.new("Awesome", :none) }
+
+  it "highlights the correct colors" do
+    subject.to_s.should == "hi Awesome guifg=NONE ctermfg=NONE"
+  end
+end
+
 describe Palette::Rule, "with a foreground and background" do
   it_should_behave_like "rule with colors"
   subject { Palette::Rule.new("Awesome", fg, bg) }
